@@ -24,7 +24,7 @@ const ShowForm = () => {
 
     const getThisFormRef = useRef(null);
 
-    const ENDPOINT_URL = `https://api-formease.domain.com/form?api_key=<<api_key>>&form_id=${formData?.form_id}`
+    const ENDPOINT_URL = `https://api-formease.vercel.app/form?api_key=<<api_key>>&form_id=${formData?.form_id}`
 
     const handleChange = (event, newValue) => {
         setValue(newValue);

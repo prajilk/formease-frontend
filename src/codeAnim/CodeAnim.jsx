@@ -20,7 +20,7 @@ const CodeAnim = () => {
     const code = `<span style='color: #3f8151'>// Use any HTTP Request Libraries like Fetch, Axios, Ajax etc.</span><br>
                 <span style='color: #dcd997'>fetch</span>
                 <span style='color: #af63cb'>(</span>
-                <span style = 'color: #b76a4a'>'https://api-formease.domain.com/form?api_key=&lt;&lt;api_key&gt;&gt;&form_id=&lt;&lt;form_id&gt;&gt;</span>
+                <span style = 'color: #b76a4a'>'https://api-formease.vercel.app/form?api_key=&lt;&lt;api_key&gt;&gt;&form_id=&lt;&lt;form_id&gt;&gt;</span>
                 <span style= 'color: #fff'>,</span>&nbsp;
                 <span style= 'color: #1985f3'>{</span><br>
                 <span style= 'color: #8bdbfe'>&emsp;method: </span>

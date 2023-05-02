@@ -53,7 +53,7 @@ const Setup = () => {
                 </Typography>
                 <Box sx={{ p: 3, bgcolor: 'rgba(0,0,0,0.1)', borderRadius: '10px', color: '#003A75', fontFamily: 'Poppins', border: '1px solid rgba(0,0,0,0.1)' }}>
                     <Typography>
-                        https://api-formease.domain.com/form?api_key=&lt;&lt;api_key&gt;&gt;&form_id=&lt;&lt;api_key&gt;&gt;
+                        https://api-formease.vercel.app/form?api_key=&lt;&lt;api_key&gt;&gt;&form_id=&lt;&lt;api_key&gt;&gt;
                     </Typography>
                 </Box>
             </Box>
