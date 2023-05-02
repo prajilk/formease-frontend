@@ -52,7 +52,7 @@ const Analytics = ({ setIsError }) => {
             const totalSub = res.data.formAnalytics.sinceCreated.datas.reduce(function (accumulator, currentValue) {
                 return accumulator + currentValue;
             }, 0);
-            setTotalSubmissions(totalSub + res.data.formAnalytics['today'].submissions)
+            setTotalSubmissions(totalSub)
             setTodaysSubmissions(res.data.formAnalytics['today'].submissions)
         }).catch((err) => {
             if (err.code !== "ERR_CANCELED") {
