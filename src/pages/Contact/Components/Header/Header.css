@@ -11,6 +11,16 @@
     margin-bottom: 1rem;
 }
 
+.loadingLite {
+    width: 15px;
+    height: 15px;
+    border: 1.5px solid transparent;
+    border-top: 1.5px solid #fff;
+    border-bottom: 1.5px solid #fff;
+    border-radius: 50%;
+    animation: load 1s infinite linear;
+}
+
 #country {
     width: 100%;
     background-color: #EDF2FF;

@@ -1,5 +1,6 @@
 import { Backdrop, Card, Typography } from '@mui/material'
 import React from 'react'
+import './CreatingFormModal.css';
 
 const CreatingFormModal = ({ creatingFormLoad }) => {
     return (
