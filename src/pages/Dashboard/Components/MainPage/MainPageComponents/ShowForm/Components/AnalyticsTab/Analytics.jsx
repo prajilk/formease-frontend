@@ -10,7 +10,7 @@ import {
     Filler,
     Tooltip
 } from 'chart.js';
-import { Box, Button, Menu, MenuItem, Typography } from '@mui/material';
+import { Box, Button, Menu, MenuItem, Typography, useTheme } from '@mui/material';
 import { ArrowDropDown, ShowChart, Timeline } from '@mui/icons-material';
 import axiosBase from '../../../../../../../../config/axios';
 import axios from 'axios';
@@ -31,6 +31,8 @@ function setMaxValue(n) {
 }
 
 const Analytics = ({ setIsError }) => {
+
+    const theme = useTheme();
 
     const [selectedFilter, setSelectedFilter] = React.useState(7);
     const [graphFilter, setGraphFilter] = React.useState("Last 7 days");
@@ -162,14 +164,15 @@ const Analytics = ({ setIsError }) => {
                 </Menu>
             </div>
             <Line data={data} options={options} />
-            <Box sx={{ mt: 4, display: 'flex', gap: 3 }}>
+            <Box sx={{ mt: 4, display: 'flex', gap: 3, [theme.breakpoints.down('md')]: { flexWrap: 'wrap', justifyContent: 'center' } }}>
                 <Box sx={{
                     p: 3,
                     width: 'fit-content',
                     borderRadius: '10px',
                     boxShadow: '0 0 10px 5px rgba(0,0,0,0.1)',
                     display: 'flex',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    [theme.breakpoints.down('md')]: { width: '100%', justifyContent: 'space-between' }
                 }}>
                     <Box>
                         <Typography sx={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 'small' }}>Today's submissions</Typography>
@@ -185,7 +188,8 @@ const Analytics = ({ setIsError }) => {
                     borderRadius: '10px',
                     boxShadow: '0 0 10px 5px rgba(0,0,0,0.1)',
                     display: 'flex',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    [theme.breakpoints.down('md')]: { width: '100%', justifyContent: 'space-between' }
                 }}>
                     <Box>
                         <Typography sx={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 'small' }}>Total submissions</Typography>

@@ -51,9 +51,21 @@ const Setup = () => {
                 <Typography sx={{ fontFamily: 'Poppins', my: 1 }}>
                     Formease will provide you with an API URL specifically generated for your form.
                 </Typography>
-                <Box sx={{ p: 3, bgcolor: 'rgba(0,0,0,0.1)', borderRadius: '10px', color: '#003A75', fontFamily: 'Poppins', border: '1px solid rgba(0,0,0,0.1)' }}>
+                <Box sx={{
+                    p: 3,
+                    bgcolor: 'rgba(0,0,0,0.1)',
+                    borderRadius: '10px',
+                    color: '#003A75',
+                    fontFamily: 'Poppins',
+                    border: '1px solid rgba(0,0,0,0.1)',
+                    whiteSpace: 'nowrap',
+                    overflow: 'scroll',
+                    '::-webkit-scrollBar': {
+                        display: 'none'
+                    }
+                }}>
                     <Typography>
-                        https://api-formease.vercel.app/form?api_key=&lt;&lt;api_key&gt;&gt;&form_id=&lt;&lt;api_key&gt;&gt;
+                        https://api-formease.vercel.app/form?api_key=&lt;&lt;api_key&gt;&gt;&form_id=&lt;&lt;form_id&gt;&gt;
                     </Typography>
                 </Box>
             </Box>
@@ -64,7 +76,20 @@ const Setup = () => {
                 <Typography sx={{ fontFamily: 'Poppins', my: 1 }}>
                     Use Fetch, Axios, or similar libraries to make an HTTP POST request to the Formease API URL, passing the form data as the payload.
                 </Typography>
-                <Box sx={{ p: 3, bgcolor: 'rgba(0,0,0,0.1)', borderRadius: '10px', color: '#003A75', fontFamily: 'Poppins', border: '1px solid rgba(0,0,0,0.1)', mb: 3 }}>
+                <Box sx={{
+                    p: 3,
+                    bgcolor: 'rgba(0,0,0,0.1)',
+                    borderRadius: '10px',
+                    color: '#003A75',
+                    fontFamily: 'Poppins',
+                    border: '1px solid rgba(0,0,0,0.1)',
+                    mb: 3,
+                    whiteSpace: 'nowrap',
+                    overflow: 'scroll',
+                    '::-webkit-scrollBar': {
+                        display: 'none'
+                    }
+                }}>
                     <Typography>
                         ⓘ Use any HTTP Request Libraries like Fetch, Axios, Ajax etc.
                     </Typography>
@@ -80,6 +105,7 @@ const Setup = () => {
                     padding: '1rem',
                     borderRadius: '10px',
                     color: 'gray',
+                    whiteSpace: 'nowrap',
                     overflow: 'scroll',
                     '::-webkit-scrollBar': {
                         display: 'none'

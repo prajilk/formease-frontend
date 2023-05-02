@@ -161,7 +161,7 @@ const Response = () => {
                         </code>
                     </Box>
                     <Typography variant='caption' sx={{ fontFamily: 'Poppins' }}>
-                        Turn on the form servie from form settings. <span style={{ color: '#00bfff', cursor: 'pointer' }} onClick={() => navigate('/dashboard')}>Go to Dashboard</span>
+                        Turn on the form service from form settings. <span style={{ color: '#00bfff', cursor: 'pointer' }} onClick={() => navigate('/dashboard')}>Go to Dashboard</span>
                     </Typography>
                 </li>
                 <li>
@@ -173,8 +173,8 @@ const Response = () => {
                         padding: '1rem',
                         borderRadius: '10px',
                         color: '#fff',
-                        whiteSpace: 'nowrap',
                         mt: 2,
+                        whiteSpace: 'nowrap',
                         overflow: 'scroll',
                         '::-webkit-scrollBar': {
                             display: 'none'

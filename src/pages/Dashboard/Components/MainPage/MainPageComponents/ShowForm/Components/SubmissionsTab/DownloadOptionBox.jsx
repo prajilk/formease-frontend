@@ -7,9 +7,15 @@ const DownloadOptionBox = ({ states, formData }) => {
 
     const { showDownloadMenu, setshowDownloadMenu } = states;
 
+    const makeSheetData = (data) => {
+        const modifiedSheetData = data.map(({ _id_, delete: deleteStatus, ...rest }) => rest);
+        return modifiedSheetData;
+    }
+
     const downloadAsJson = () => {
         setshowDownloadMenu(false)
-        const json = JSON.stringify(formData.form_data);
+        const sheetData = makeSheetData(formData.form_data)
+        const json = JSON.stringify(sheetData);
         const blobData = new Blob([json], { type: 'application/json' });
         const url = URL.createObjectURL(blobData);
         const link = document.createElement('a');
@@ -18,13 +24,16 @@ const DownloadOptionBox = ({ states, formData }) => {
         document.body.appendChild(link);
         link.click();
     }
+
+
     const downloadAsExcel = () => {
         setshowDownloadMenu(false)
         // Create worksheet from JSON data
-        const worksheet = XLSX.utils.json_to_sheet(formData.form_data);
+        const sheetData = makeSheetData(formData.form_data)
+        const worksheet = XLSX.utils.json_to_sheet(sheetData);
 
         // Modify header row formatting
-        const keySet = formData.form_data.reduce((set, obj) => {
+        const keySet = sheetData.reduce((set, obj) => {
             Object.keys(obj).forEach(key => set.add(key.charAt(0).toUpperCase() + key.slice(1)));
             return set;
         }, new Set());
