@@ -1,0 +1,94 @@
+#TagSVG {
+    width: 100px;
+    height: 100px;
+}
+
+#tag:hover>#bg_tag {
+    animation: bg_tag__tr 2500ms linear infinite normal forwards
+}
+
+@keyframes bg_tag__tr {
+    0% {
+        transform: translate(59.6602px, 32.601732px) rotate(0deg)
+    }
+
+    20% {
+        transform: translate(59.6602px, 32.601732px) rotate(5deg)
+    }
+
+    32% {
+        transform: translate(59.6602px, 32.601732px) rotate(2deg)
+    }
+
+    60% {
+        transform: translate(59.6602px, 32.601732px) rotate(2deg)
+    }
+
+    80% {
+        transform: translate(59.6602px, 32.601732px) rotate(0deg)
+    }
+
+    100% {
+        transform: translate(59.6602px, 32.601732px) rotate(0deg)
+    }
+}
+
+#tag:hover>#fg_tag {
+    animation: fg_tag__tr 2500ms linear infinite normal forwards
+}
+
+@keyframes fg_tag__tr {
+    0% {
+        transform: translate(59.6602px, 32.601732px) rotate(0deg)
+    }
+
+    20% {
+        transform: translate(59.6602px, 32.601732px) rotate(-12deg)
+    }
+
+    32% {
+        transform: translate(59.6602px, 32.601732px) rotate(-9deg)
+    }
+
+    60% {
+        transform: translate(59.6602px, 32.601732px) rotate(-10deg)
+    }
+
+    80% {
+        transform: translate(59.6602px, 32.601732px) rotate(0deg)
+    }
+
+    100% {
+        transform: translate(59.6602px, 32.601732px) rotate(0deg)
+    }
+}
+
+#tag:hover>#holder {
+    animation: holder__tr 2500ms linear infinite normal forwards
+}
+
+@keyframes holder__tr {
+    0% {
+        transform: translate(60.560093px, 32.588017px) rotate(0deg)
+    }
+
+    20% {
+        transform: translate(60.560093px, 32.588017px) rotate(-10.754193deg)
+    }
+
+    32% {
+        transform: translate(60.560093px, 32.588017px) rotate(-10.632225deg)
+    }
+
+    60% {
+        transform: translate(60.560093px, 32.588017px) rotate(-10.63deg)
+    }
+
+    80% {
+        transform: translate(60.560093px, 32.588017px) rotate(0deg)
+    }
+
+    100% {
+        transform: translate(60.560093px, 32.588017px) rotate(0deg)
+    }
+}

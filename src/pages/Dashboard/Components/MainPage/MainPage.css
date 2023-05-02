@@ -1,0 +1,19 @@
+.mainContentLoading {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top: 3px solid #00bfff;
+    border-bottom: 3px solid #00bfff;
+    animation: load 1s linear infinite;
+}
+
+@keyframes load {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,33 @@
+#GearSVG {
+    width: 100px;
+    height: 100px;
+}
+
+#gearGrp:hover>#smallGear {
+    animation: smallGear__tr 3000ms linear infinite normal forwards
+}
+
+#gearGrp:hover>#largeGear {
+    animation: largeGear__tr 3000ms linear infinite normal forwards
+}
+
+
+@keyframes smallGear__tr {
+    0% {
+        transform: translate(40.499998px, 39.5px) rotate(0deg)
+    }
+
+    100% {
+        transform: translate(40.499998px, 39.5px) rotate(-360deg)
+    }
+}
+
+@keyframes largeGear__tr {
+    0% {
+        transform: translate(74.999916px, 75.000072px) rotate(0deg)
+    }
+
+    100% {
+        transform: translate(74.999916px, 75.000072px) rotate(360deg)
+    }
+}

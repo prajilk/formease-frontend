@@ -1,0 +1,31 @@
+.contactInput {
+    resize: vertical;
+    background-color: #EDF2FF;
+    color: #000;
+    border: 0;
+    outline: 0;
+    padding: .7rem 1rem;
+    width: 100%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+#country {
+    width: 100%;
+    background-color: #EDF2FF;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: 10px;
+    border-right: 10px solid transparent;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+}
+
+#country option {
+    font-family: 'Poppins', sans-serif;
+}

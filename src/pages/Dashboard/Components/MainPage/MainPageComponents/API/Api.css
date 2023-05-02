@@ -1,0 +1,27 @@
+.loadingRed,
+.loadingDark {
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid transparent;
+    border-top: 1.5px solid red;
+    border-bottom: 1.5px solid red;
+    border-radius: 50%;
+    animation: load 1s infinite linear;
+}
+
+.loadingDark {
+    width: 20px;
+    height: 20px;
+    border-top: 1.5px solid #000;
+    border-bottom: 1.5px solid #000;
+}
+
+@keyframes load {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

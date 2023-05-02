@@ -1,0 +1,10 @@
+.section3 {
+    background: url(../../../../../public/pics/slopeLite.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #00bfff;
+    padding-top: 15rem;
+    padding-bottom: 5rem;
+    text-align: center;
+    position: relative;
+}

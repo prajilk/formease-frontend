@@ -1,0 +1,40 @@
+#PuzzleSVG {
+    width: 100px;
+    height: 100px;
+}
+
+#puzzle:hover>#float_puzzle {
+    animation: float_puzzle__to 1000ms linear infinite normal forwards
+}
+
+@keyframes float_puzzle__to {
+    0% {
+        offset-distance: 0%
+    }
+
+    50% {
+        offset-distance: 100%
+    }
+
+    100% {
+        offset-distance: 100%
+    }
+}
+
+#puzzle:hover>#float_puzzle>#float_puzzle_rotate {
+    animation: float_puzzle_rotate__tr 1000ms linear infinite normal forwards
+}
+
+@keyframes float_puzzle_rotate__tr {
+    0% {
+        transform: rotate(24.42283deg)
+    }
+
+    50% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(0deg)
+    }
+}

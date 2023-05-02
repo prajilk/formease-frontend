@@ -1,0 +1,50 @@
+.authInput {
+    background-color: #EDF2FF;
+    color: #000;
+    border: 0;
+    outline: 0;
+    padding: .5rem 1rem;
+    width: 100%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+.loading {
+    width: 21.5px;
+    height: 21.5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-bottom: 3px solid #fff;
+    border-top: 3px solid #fff;
+    animation: load 1s infinite linear;
+}
+
+#country {
+    width: 100%;
+    background-color: #EDF2FF;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: 10px;
+    border-right: 10px solid transparent;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+}
+
+#country option {
+    font-family: 'Poppins', sans-serif;
+}
+
+@keyframes load {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

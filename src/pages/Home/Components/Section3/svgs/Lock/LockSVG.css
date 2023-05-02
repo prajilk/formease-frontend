@@ -1,0 +1,38 @@
+#LockSVG {
+    width: 100px;
+    height: 100px;
+}
+
+#lock:hover {
+    animation: lock__tr 1500ms linear infinite normal forwards
+}
+
+@keyframes lock__tr {
+    0% {
+        transform: translate(50px, 50px) rotate(0deg)
+    }
+
+    13.333333% {
+        transform: translate(50px, 50px) rotate(10deg)
+    }
+
+    26.666667% {
+        transform: translate(50px, 50px) rotate(-10deg)
+    }
+
+    40% {
+        transform: translate(50px, 50px) rotate(10deg)
+    }
+
+    53.333333% {
+        transform: translate(50px, 50px) rotate(-10deg)
+    }
+
+    66.666667% {
+        transform: translate(50px, 50px) rotate(0deg)
+    }
+
+    100% {
+        transform: translate(50px, 50px) rotate(0deg)
+    }
+}

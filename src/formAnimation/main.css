@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.card {
+  margin: 70px auto 0;
+  width: 400px;
+  height: 480px;
+  perspective: 1500px;
+}
+
+.card__inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.card__inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card__face--front {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__face--back {
+  background-color: var(--light);
+  transform: rotateY(180deg);
+}
+
+.card__content {
+  width: 100%;
+  height: 100%;
+  background-color: #14276e;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card_left-to-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*/////////////////*/
+.input-con {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 2rem 4rem 0 4rem;
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  margin-top: 0;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+
+#msg {
+  resize: none;
+}
+
+#mail,
+#name,
+#phone,
+#msg {
+  outline: 0;
+  background-color: #EDF2FF;
+  font-family: 'Poppins', sans-serif;
+  color: #000;
+  border: 0;
+  border-radius: 30px;
+  padding: .5rem 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.send-btn {
+  width: 100%;
+  color: white;
+  padding: .7rem;
+  border-radius: 30px;
+  background-color: #007fff;
+  outline: 0;
+  border: 0;
+  font-weight: 600;
+}
+
+.send-btn:hover {
+  background-color: #0562c0;
+}
+
+.send-btn:active {
+  transform: scale(.95)
+}
+
+/* BACK SIDE OF CARD */
+#bottom g {
+  transform: translateY(-10%);
+  transition: 2s ease-in-out;
+}
+
+#top g {
+  transform: translateY(10%);
+  transition: 2s ease-in-out;
+}
+
+#left g {
+  transition: 2s ease-in-out;
+  transform: translateX(10%);
+}
+
+#right g {
+  transition: 2s ease-in-out;
+  transform: translateX(-10%);
+}
+
+.draw {
+  transition: 2s linear;
+  stroke-dashoffset: 0;
+}
+
+#link_right_grp circle,
+#link_right_grp image,
+#link_left_grp circle,
+#link_left_grp image,
+#link_top_grp circle,
+#link_top_grp image,
+#link_bottom_grp circle,
+#link_bottom_grp image {
+  transition: 1s linear;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 300px;
+    height: 450px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: .8rem;
+  }
+
+  .input-con {
+    margin: .5rem 1.5rem 0 1.5rem;
+  }
+
+  svg {
+    width: 300px;
+    height: 300px;
+  }
+}

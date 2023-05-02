@@ -1,0 +1,47 @@
+.showProfile {
+    padding: .5rem;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    background-color: rgb(247, 250, 252);
+    border: 1px solid transparent;
+    width: 100%;
+}
+
+.loadingLite,
+.loadingRed {
+    width: 15px;
+    height: 15px;
+    border: 1.5px solid transparent;
+    border-top: 1.5px solid #fff;
+    border-bottom: 1.5px solid #fff;
+    border-radius: 50%;
+    animation: load 1s infinite linear;
+}
+
+.loadingRed {
+    width: 22px;
+    height: 22px;
+    border-top: 1.5px solid red;
+    border-bottom: 1.5px solid red;
+}
+
+.editProfile {
+    padding: .5rem;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    outline: 0;
+    width: 100%;
+}
+
+@keyframes load {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
