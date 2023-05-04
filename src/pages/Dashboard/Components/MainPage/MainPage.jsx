@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-    AppBar, Backdrop, Box, Card, CssBaseline, Divider, Drawer, IconButton, List,
+    AppBar, Backdrop, Box, Button, Card, CssBaseline, Divider, Drawer, IconButton, List,
     ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography
 } from '@mui/material';
 import { ApiRounded, DashboardRounded, Menu } from '@mui/icons-material';
@@ -90,7 +90,42 @@ function MainPage(props) {
                     </React.Suspense>
                 )
             default:
-                return <h1>Dash</h1>
+                return (
+                    <Box sx={{
+                        width: '100%',
+                        mt: '5rem',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        flexDirection: 'column'
+                    }}>
+                        <Typography variant='h2' sx={{
+                            fontFamily: 'Poppins',
+                            fontWeight: 900
+                        }}>
+                            404
+                        </Typography>
+                        <Typography sx={{
+                            fontFamily: 'Poppins',
+                            fontWeight: 700
+                        }}>WE ARE SORRY, PAGE NOT FOUND!</Typography>
+                        <Button size='small' sx={{
+                            bgcolor: '#00bfff',
+                            color: '#fff',
+                            fontFamily: 'Poppins',
+                            p: '5px 20px',
+                            borderRadius: '100vw',
+                            mt: '.7rem',
+                            border: '1px solid #00bfff',
+                            ':hover': {
+                                background: 'transparent',
+                                color: '#00bfff',
+                            }
+                        }} onClick={() => navigate('/dashboard')}>
+                            back to dashboard
+                        </Button>
+                    </Box>
+                )
         }
     }
 

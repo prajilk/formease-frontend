@@ -2,6 +2,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom'
 import { UserContext } from './Context/Context'
 import { Suspense, lazy, useState } from 'react';
+import Error404 from './pages/Error404/Error404';
 
 const Home = lazy(() => import('./pages/Home/Home'))
 const Login = lazy(() => import('./pages/Auth/Login'))
@@ -27,6 +28,9 @@ function App() {
             <Suspense fallback={<PageLoading />}>
                 <div className="App">
                     <Routes>
+                        <Route
+                            path="*"
+                            element={<Error404 />} />
                         <Route
                             exact
                             path='/'
