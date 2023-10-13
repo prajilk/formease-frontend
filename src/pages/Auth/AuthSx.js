@@ -16,6 +16,27 @@ export const submitBtnSx = {
         bgcolor: '#00bfff'
     }
 }
+export const demoUserBtnSx = {
+    textTransform: 'capitalize',
+    fontFamily: 'Poppins',
+    fontWeight: 600,
+    fontSize: '.9rem',
+    py: 1,
+    width: '100%',
+    bgcolor: "transparent",
+    border: '1px solid #00bfff',
+    color: '#00bfff',
+    marginTop: '.7rem',
+    boxShadow: 'none',
+    ':hover': {
+        bgcolor: 'transparent',
+        boxShadow: 'none'
+    },
+    '&.Mui-disabled': {
+        color: '#00bfff',
+        bgcolor: 'transparent'
+    }
+}
 export const swapAuthLabelSx = {
     fontFamily: 'Poppins',
     fontWeight: 400,
