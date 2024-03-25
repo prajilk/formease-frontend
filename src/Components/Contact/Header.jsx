@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import "./Header.css";
 import React, { useState } from "react";
-import { country_list } from "../../../countries";
+import { country_list } from "../../lib/countries";
 import { submitBtnSx } from "../../pages/Auth/AuthSx";
 import axios from "../../config/axios";
 

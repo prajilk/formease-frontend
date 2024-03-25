@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import "./Auth.css";
-import { country_list } from "../countries";
+import { country_list } from "../../lib/countries";
 import { submitBtnSx, swapAuthLabelSx, swapAuthLinkSx } from "./AuthSx";
 import axios from "../../config/axios";
 import { Error } from "@mui/icons-material";

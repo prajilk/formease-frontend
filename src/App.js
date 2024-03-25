@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import { UserContext } from './Context/Context'
 import { Suspense, lazy, useState } from 'react';
 import Error404 from './pages/Error404/Error404';
-import ProtectedRoute from './pages/Components/ProtectedRoute';
+import ProtectedRoute from './Components/ProtectedRoute';
 import PageLoading from './Components/Shared/PageLoading';
 
 const Home = lazy(() => import('./pages/Home/Home'))
@@ -12,14 +12,6 @@ const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'))
 const Register = lazy(() => import('./pages/Auth/Register'))
 const Docs = lazy(() => import('./pages/Docs/Docs'))
 const Contact = lazy(() => import('./pages/Contact/Contact'))
-
-// function PageLoading() {
-//     return (
-//         <div className='page-load-container'>
-//             <div className='pageLoading'></div>
-//         </div>
-//     )
-// }
 
 function App() {
 

@@ -1,5 +1,5 @@
 import React from "react";
-import MainPage from "./Components/MainPage/MainPage";
+import MainPage from "../../Components/Dashboard/MainPage/MainPage";
 import "./Dashboard.css";
 
 const Dashboard = () => {
