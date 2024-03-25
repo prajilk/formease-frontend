@@ -6,6 +6,7 @@ export const submitBtnSx = {
     py: 1,
     width: '100%',
     bgcolor: '#00bfff',
+    borderRadius: '8px',
     boxShadow: 'none',
     ':hover': {
         bgcolor: '#00bfff',
@@ -24,6 +25,7 @@ export const demoUserBtnSx = {
     py: 1,
     width: '100%',
     bgcolor: "transparent",
+    borderRadius: '8px',
     border: '1px solid #00bfff',
     color: '#00bfff',
     marginTop: '.7rem',

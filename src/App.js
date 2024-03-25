@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom'
 import { UserContext } from './Context/Context'
 import { Suspense, lazy, useState } from 'react';
 import Error404 from './pages/Error404/Error404';
+import ProtectedRoute from './pages/Components/ProtectedRoute';
+import PageLoading from './Components/Shared/PageLoading';
 
 const Home = lazy(() => import('./pages/Home/Home'))
 const Login = lazy(() => import('./pages/Auth/Login'))
@@ -11,13 +13,13 @@ const Register = lazy(() => import('./pages/Auth/Register'))
 const Docs = lazy(() => import('./pages/Docs/Docs'))
 const Contact = lazy(() => import('./pages/Contact/Contact'))
 
-function PageLoading() {
-    return (
-        <div className='page-load-container'>
-            <div className='pageLoading'></div>
-        </div>
-    )
-}
+// function PageLoading() {
+//     return (
+//         <div className='page-load-container'>
+//             <div className='pageLoading'></div>
+//         </div>
+//     )
+// }
 
 function App() {
 
@@ -36,19 +38,26 @@ function App() {
                             path='/'
                             element={<Home />} />
                         <Route
-                            path='/dashboard/login'
+                            path='/login'
                             element={<Login />} />
                         <Route
-                            path='/dashboard/register'
+                            path='/register'
                             element={<Register />} />
+
                         <Route
-                            exact
-                            path='/dashboard'
-                            element={<Dashboard />} />
+                            path="/dashboard"
+                            element={<ProtectedRoute />}
+                        >
+                            <Route index element={<Dashboard />} />
+                        </Route>
+
                         <Route
-                            exact
-                            path='/dashboard/:id'
-                            element={<Dashboard />} />
+                            path="/dashboard/:id"
+                            element={<ProtectedRoute />}
+                        >
+                            <Route index element={<Dashboard />} />
+                        </Route>
+
                         <Route
                             exact
                             path='/docs'

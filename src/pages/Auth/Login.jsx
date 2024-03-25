@@ -8,7 +8,7 @@ import {
     Typography,
 } from "@mui/material";
 import { Error } from "@mui/icons-material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Auth.css";
 import {
     demoUserBtnSx,
@@ -18,15 +18,30 @@ import {
 } from "./AuthSx";
 import axios from "../../config/axios";
 import { useNavigate } from "react-router-dom";
+import PageLoading from "../../Components/Shared/PageLoading";
 
 const Register = () => {
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [loading, setLoading] = useState(false);
     const [isLoginError, setIsLoginError] = useState(false);
     const [loginErrorLabel, setLoginErrorLabel] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true);
+        axios
+            .get("/user/verify")
+            .then(() => {
+                navigate("/dashboard");
+                setIsLoading(false);
+            })
+            .catch(() => {
+                setIsLoading(false);
+            });
+    }, [navigate]);
 
     const login = (e) => {
         e.preventDefault();
@@ -52,6 +67,10 @@ const Register = () => {
         setEmail("test@user.com");
         setPassword("12345678");
     };
+
+    if (isLoading) {
+        return <PageLoading />;
+    }
 
     return (
         <section
@@ -82,9 +101,9 @@ const Register = () => {
                     <form onSubmit={login}>
                         <Card
                             sx={{
-                                boxShadow:
-                                    "0 30px 60px -12px rgba(50,50,93,0.25),0 18px 36px -18px rgba(0,0,0,0.3)",
-                                borderRadius: "10px",
+                                boxShadow: "0px 6px 21px -3px rgba(0,0,0,0.14)",
+                                borderRadius: "20px",
+                                padding: "20px 10px",
                             }}
                         >
                             <CardContent sx={{ p: 5 }}>
@@ -178,7 +197,7 @@ const Register = () => {
                                             component={"span"}
                                             variant="body2"
                                             onClick={() =>
-                                                navigate("/dashboard/register")
+                                                navigate("/register")
                                             }
                                             sx={swapAuthLinkSx}
                                         >
