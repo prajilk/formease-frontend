@@ -13,10 +13,11 @@ import {
 } from "@mui/material";
 import { Add, Settings, Logout, AccountCircle } from "@mui/icons-material";
 import { UserContext } from "../../../Context/Context";
-import axios from "../../../config/axios";
 import { useNavigate } from "react-router-dom";
+import axios from "../../../config/axios";
+import { toast } from "sonner";
 
-export default function ProfileMenu({ setLogOutLoading }) {
+export default function ProfileMenu() {
     const { user } = React.useContext(UserContext);
     const navigate = useNavigate();
 
@@ -30,20 +31,14 @@ export default function ProfileMenu({ setLogOutLoading }) {
         setAnchorEl(null);
     };
     const handleSignOut = () => {
+        toast.success("Signed out successfully");
         setAnchorEl(null);
-        setLogOutLoading(true);
-        axios
-            .get("/signout")
-            .then(() => {
-                setTimeout(() => {
-                    setLogOutLoading(false);
-                    navigate("/login");
-                }, 1000);
-            })
-            .catch((err) => {
-                setLogOutLoading(false);
-                console.log(err);
-            });
+        localStorage.removeItem("token");
+        axios.interceptors.request.use((config) => {
+            config.headers.Authorization = null;
+            return config;
+        });
+        navigate("/login");
     };
     return (
         <React.Fragment>

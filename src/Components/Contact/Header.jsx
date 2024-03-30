@@ -1,11 +1,9 @@
 import {
-    Alert,
     Box,
     Button,
     Card,
     CardContent,
     Container,
-    Snackbar,
     Typography,
     useTheme,
 } from "@mui/material";
@@ -14,6 +12,7 @@ import React, { useState } from "react";
 import { country_list } from "../../lib/countries";
 import { submitBtnSx } from "../../pages/Auth/AuthSx";
 import axios from "../../config/axios";
+import { toast } from "sonner";
 
 const Header = () => {
     const theme = useTheme();
@@ -23,9 +22,6 @@ const Header = () => {
     const [country, setCountry] = useState("");
     const [msg, setMsg] = useState("");
     const [loading, setLoading] = useState(false);
-    const [isError, setIsError] = useState(false);
-    const [status, setStatus] = useState(false);
-    const [statusColor, setStatusColor] = useState("success");
 
     const sendMessage = (e) => {
         e.preventDefault();
@@ -39,7 +35,7 @@ const Header = () => {
             })
             .then((res) => {
                 if (res.data.success) {
-                    setStatus(true);
+                    toast.success("Message sent successfully");
                     setLoading(false);
                     // set input field to blank
                     setFullname("");
@@ -50,9 +46,8 @@ const Header = () => {
                 }
             })
             .catch(() => {
-                setStatusColor("error");
                 setLoading(false);
-                setIsError(true);
+                toast.error("Something went wrong!");
             });
     };
 
@@ -174,31 +169,6 @@ const Header = () => {
                     </form>
                 </Box>
             </Container>
-            <Snackbar
-                anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                open={isError || status}
-                autoHideDuration={3000}
-                onClose={() => {
-                    setIsError(false);
-                    setStatus(false);
-                    setStatusColor("success");
-                }}
-            >
-                <Alert
-                    severity={statusColor}
-                    variant="filled"
-                    sx={{ width: "100%" }}
-                    onClose={() => {
-                        setIsError(false);
-                        setStatus(false);
-                        setStatusColor("success");
-                    }}
-                >
-                    {isError
-                        ? "Somthing went wrong!"
-                        : "Message sent successfully"}
-                </Alert>
-            </Snackbar>
         </section>
     );
 };

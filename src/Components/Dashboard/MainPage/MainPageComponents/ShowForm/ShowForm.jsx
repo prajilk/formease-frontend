@@ -1,10 +1,8 @@
 import {
-    Alert,
     Box,
     Button,
     Chip,
     Skeleton,
-    Snackbar,
     Tab,
     Tabs,
     Typography,
@@ -18,17 +16,16 @@ import TableLoading from "./Components/SubmissionsTab/TableLoading";
 import MainContentLoading from "../../MainContentLoading";
 import DownloadOptionBox from "./Components/SubmissionsTab/DownloadOptionBox";
 import FormSettings from "./Components/SettingsTab/FormSettings";
+import { toast } from "sonner";
 const Analytics = lazy(() => import("./Components/AnalyticsTab/Analytics"));
 const TableView = lazy(() => import("./Components/SubmissionsTab/TableView"));
 
 const ShowForm = () => {
     const [value, setValue] = useState(0);
     const [searchParam] = useSearchParams();
-    const [isError, setIsError] = useState(false);
-    const [open, setOpen] = useState(false);
     const [inValidFormId, setInValidFormId] = useState(null);
     const [formData, setFormData] = useState([]);
-    const [showDownloadMenu, setshowDownloadMenu] = useState(false);
+    const [showDownloadMenu, setShowDownloadMenu] = useState(false);
     const formId = searchParam.get("id");
 
     const getThisFormRef = useRef(null);
@@ -52,7 +49,7 @@ const ShowForm = () => {
             })
             .catch((err) => {
                 if (err.code !== "ERR_CANCELED") {
-                    setIsError(true);
+                    toast.error("Something went wrong!");
                     setInValidFormId(err.response.data.message);
                 }
             });
@@ -121,7 +118,7 @@ const ShowForm = () => {
                                 <ContentCopy
                                     sx={{ width: "15px", cursor: "pointer" }}
                                     onClick={() => {
-                                        setOpen(true);
+                                        toast.success("copied to clipboard!");
                                         navigator.clipboard.writeText(
                                             formData?.form_id
                                         );
@@ -149,28 +146,10 @@ const ShowForm = () => {
                                     <ContentCopy style={{ color: "#00bfff" }} />
                                 }
                                 onClick={() => {
-                                    setOpen(true);
+                                    toast.success("copied to clipboard!");
                                     navigator.clipboard.writeText(ENDPOINT_URL);
                                 }}
                             />
-                            <Snackbar
-                                anchorOrigin={{
-                                    vertical: "top",
-                                    horizontal: "right",
-                                }}
-                                open={open}
-                                autoHideDuration={3000}
-                                onClose={() => setOpen(false)}
-                            >
-                                <Alert
-                                    onClose={() => setOpen(false)}
-                                    severity="success"
-                                    variant="filled"
-                                    sx={{ width: "100%" }}
-                                >
-                                    copied to clipboard!
-                                </Alert>
-                            </Snackbar>
                         </div>
                     </Box>
                     <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -221,7 +200,7 @@ const ShowForm = () => {
                                         size="small"
                                         variant="contained"
                                         onClick={() =>
-                                            setshowDownloadMenu((prev) => !prev)
+                                            setShowDownloadMenu((prev) => !prev)
                                         }
                                         sx={{
                                             textTransform: "capitalize",
@@ -237,7 +216,7 @@ const ShowForm = () => {
                                     <DownloadOptionBox
                                         states={{
                                             showDownloadMenu,
-                                            setshowDownloadMenu,
+                                            setShowDownloadMenu,
                                         }}
                                         formData={formData}
                                     />
@@ -268,7 +247,7 @@ const ShowForm = () => {
                     )}
                     <TabPanel value={value} index={1}>
                         <Suspense fallback={<TableLoading />}>
-                            <Analytics setIsError={setIsError} />
+                            <Analytics />
                         </Suspense>
                     </TabPanel>
                     <TabPanel value={value} index={2}>
@@ -290,21 +269,6 @@ const ShowForm = () => {
                     />
                 </Box>
             )}
-            <Snackbar
-                anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                open={isError}
-                autoHideDuration={3000}
-                onClose={() => setIsError(false)}
-            >
-                <Alert
-                    severity="error"
-                    variant="filled"
-                    sx={{ width: "100%" }}
-                    onClose={() => setIsError(false)}
-                >
-                    Somthing went wrong!
-                </Alert>
-            </Snackbar>
         </Box>
     );
 };

@@ -1,11 +1,8 @@
 import * as React from "react";
 import {
     AppBar,
-    Backdrop,
     Box,
     Button,
-    Card,
-    CircularProgress,
     CssBaseline,
     Divider,
     Drawer,
@@ -43,7 +40,6 @@ function MainPage(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [creatingFormLoad, setCreatingFormLoad] = React.useState(false);
-    const [logOutLoading, setLogOutLoading] = React.useState(false);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -235,7 +231,7 @@ function MainPage(props) {
                             justifyContent: "flex-end",
                         }}
                     >
-                        <ProfileMenu setLogOutLoading={setLogOutLoading} />
+                        <ProfileMenu />
                     </Box>
                 </Toolbar>
             </AppBar>
@@ -293,30 +289,6 @@ function MainPage(props) {
                 <MainContent />
                 {/* MAIN CONTENT HERE */}
             </Box>
-            <Backdrop
-                sx={{
-                    color: "#fff",
-                    zIndex: (theme) => theme.zIndex.drawer + 1,
-                }}
-                open={logOutLoading}
-            >
-                <Card
-                    sx={{
-                        px: 5,
-                        py: 3,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: 2,
-                    }}
-                >
-                    <CircularProgress />
-                    <Typography sx={{ fontFamily: "Poppins", fontWeight: 300 }}>
-                        Signing out...
-                    </Typography>
-                </Card>
-            </Backdrop>
             <CreatingFormModal creatingFormLoad={creatingFormLoad} />
         </Box>
     );

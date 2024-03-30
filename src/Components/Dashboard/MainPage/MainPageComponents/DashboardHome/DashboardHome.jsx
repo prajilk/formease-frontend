@@ -1,18 +1,11 @@
 import { Circle, ContentCopy, Description } from "@mui/icons-material";
-import {
-    Alert,
-    Box,
-    Divider,
-    IconButton,
-    Snackbar,
-    Typography,
-    useTheme,
-} from "@mui/material";
+import { Box, Divider, IconButton, Typography, useTheme } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import axiosBase from "../../../../../config/axios";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import MainContentLoading from "../../MainContentLoading";
+import { toast } from "sonner";
 
 const DashboardHome = () => {
     const theme = useTheme();
@@ -20,10 +13,7 @@ const DashboardHome = () => {
     const getFormRef = useRef(null);
 
     const [forms, setForms] = useState([]);
-    const [isError, setIsError] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [copied, setCopied] = useState(false);
-    const [copiedError, setCopiedError] = useState(false);
 
     useEffect(() => {
         getFormRef.current = axios.CancelToken.source();
@@ -34,7 +24,8 @@ const DashboardHome = () => {
                 setIsLoaded(true);
             })
             .catch((err) => {
-                if (err.code !== "ERR_CANCELED") setIsError(true);
+                if (err.code !== "ERR_CANCELED")
+                    toast.error("Something went wrong!");
             });
         return () => {
             getFormRef.current?.cancel();
@@ -46,10 +37,10 @@ const DashboardHome = () => {
         navigator.clipboard
             .writeText(form_id)
             .then(() => {
-                setCopied(true);
+                toast.error("Copied to clipboard");
             })
             .catch(() => {
-                setCopiedError(true);
+                toast.error("Failed to copy to clipboard!");
             });
     };
 
@@ -278,44 +269,6 @@ const DashboardHome = () => {
                     </Box>
                 )}
             </Box>
-            <Snackbar
-                anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                open={isError || copiedError}
-                autoHideDuration={3000}
-                onClose={() => {
-                    setIsError(false);
-                    setCopiedError(false);
-                }}
-            >
-                <Alert
-                    severity="error"
-                    variant="filled"
-                    sx={{ width: "100%" }}
-                    onClose={() => {
-                        setIsError(false);
-                        setCopiedError(false);
-                    }}
-                >
-                    {isError
-                        ? "Somthing went wrong!"
-                        : "Failed to copy to clipboard!"}
-                </Alert>
-            </Snackbar>
-            <Snackbar
-                anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                open={copied}
-                autoHideDuration={3000}
-                onClose={() => setCopied(false)}
-            >
-                <Alert
-                    severity="success"
-                    variant="filled"
-                    sx={{ width: "100%" }}
-                    onClose={() => setCopied(false)}
-                >
-                    Copied to clipboard
-                </Alert>
-            </Snackbar>
         </Box>
     );
 };

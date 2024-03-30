@@ -1,33 +1,29 @@
 import { ContentCopy } from "@mui/icons-material";
 import {
-    Alert,
     Box,
     Button,
     Card,
     CardContent,
     Divider,
     IconButton,
-    Snackbar,
     Typography,
 } from "@mui/material";
 import React, { lazy, useEffect, useState } from "react";
 import axiosBase from "../../../../../config/axios";
 import "./Api.css";
 import MainContentLoading from "../../MainContentLoading";
+import { toast } from "sonner";
 const RevokeApiModal = lazy(() => import("./Components/RevokeApiModal"));
 const RollApiModal = lazy(() => import("./Components/RollApiModal"));
 
 const Api = () => {
     const [revealKey, setRevealKey] = useState(false);
-    const [open, setOpen] = useState(false);
     const [apiRevoked, setApiRevoked] = useState(false);
     const [loading, setLoading] = useState(false);
     const [wentWrong, setWentWrong] = useState(false);
     const [rollApiOpen, setRollApiOpen] = useState(false);
     const [revokeApiOpen, setRevokeApiOpen] = useState(false);
     const [apiKey, setApiKey] = useState(null);
-
-    const id = open ? "simple-popover" : undefined;
 
     useEffect(() => {
         axiosBase
@@ -154,32 +150,13 @@ const Api = () => {
                         </Box>
                         <Box>
                             <IconButton
-                                aria-describedby={id}
                                 onClick={() => {
-                                    setOpen(true);
+                                    toast.success("API Key copied!");
                                     navigator.clipboard.writeText(apiKey);
                                 }}
                             >
                                 <ContentCopy />
                             </IconButton>
-                            <Snackbar
-                                anchorOrigin={{
-                                    vertical: "top",
-                                    horizontal: "right",
-                                }}
-                                open={open}
-                                autoHideDuration={3000}
-                                onClose={() => setOpen(false)}
-                            >
-                                <Alert
-                                    onClose={() => setOpen(false)}
-                                    severity="success"
-                                    variant="filled"
-                                    sx={{ width: "100%" }}
-                                >
-                                    API Key copied!
-                                </Alert>
-                            </Snackbar>
                         </Box>
                     </Box>
                     <Divider />

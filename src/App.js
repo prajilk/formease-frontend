@@ -5,6 +5,7 @@ import { Suspense, lazy, useState } from 'react';
 import Error404 from './pages/Error404/Error404';
 import ProtectedRoute from './Components/ProtectedRoute';
 import PageLoading from './Components/Shared/PageLoading';
+import { Toaster } from "sonner"
 
 const Home = lazy(() => import('./pages/Home/Home'))
 const Login = lazy(() => import('./pages/Auth/Login'))
@@ -71,6 +72,7 @@ function App() {
                             element={<Contact />} />
                     </Routes>
                 </div>
+                <Toaster richColors position='top-right' />
             </Suspense>
         </UserContext.Provider>
     );

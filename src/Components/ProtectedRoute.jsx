@@ -11,13 +11,18 @@ const ProtectedRoute = () => {
 
     useEffect(() => {
         setIsLoading(true);
+
+        const token = localStorage.getItem("token");
+
+        if (!token) navigate("/login");
+
         axios
             .get("/user/verify")
             .then(({ data }) => {
                 setUser(data.user);
                 setIsLoading(false);
             })
-            .catch(() => {
+            .catch((error) => {
                 setIsLoading(false);
                 navigate("/login", { replace: true });
             });

@@ -22,6 +22,7 @@ import { ArrowDropDown, ShowChart, Timeline } from "@mui/icons-material";
 import axiosBase from "../../../../../../../config/axios";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
+import { toast } from "sonner";
 
 ChartJS.register(
     LineElement,
@@ -37,7 +38,7 @@ function setMaxValue(n) {
     if (n) return Math.max(...n) + 1;
 }
 
-const Analytics = ({ setIsError }) => {
+const Analytics = () => {
     const theme = useTheme();
 
     const [selectedFilter, setSelectedFilter] = React.useState(7);
@@ -78,14 +79,14 @@ const Analytics = ({ setIsError }) => {
             })
             .catch((err) => {
                 if (err.code !== "ERR_CANCELED") {
-                    setIsError(true);
+                    toast.error("Something went wrong!");
                 }
             });
 
         return () => {
             getFormAnalyticsRef.current?.cancel();
         };
-    }, [formId, setIsError]);
+    }, [formId]);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);

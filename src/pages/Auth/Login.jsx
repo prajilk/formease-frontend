@@ -18,11 +18,9 @@ import {
 } from "./AuthSx";
 import axios from "../../config/axios";
 import { useNavigate } from "react-router-dom";
-import PageLoading from "../../Components/Shared/PageLoading";
 
 const Register = () => {
     const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -31,16 +29,8 @@ const Register = () => {
     const [loginErrorLabel, setLoginErrorLabel] = useState(false);
 
     useEffect(() => {
-        setIsLoading(true);
-        axios
-            .get("/user/verify")
-            .then(() => {
-                navigate("/dashboard");
-                setIsLoading(false);
-            })
-            .catch(() => {
-                setIsLoading(false);
-            });
+        const token = localStorage.getItem("token");
+        if (token) navigate("/dashboard");
     }, [navigate]);
 
     const login = (e) => {
@@ -48,7 +38,12 @@ const Register = () => {
         setLoading(true);
         axios
             .post("/login", { email, password })
-            .then(() => {
+            .then((response) => {
+                localStorage.setItem("token", response.data.token);
+                axios.interceptors.request.use((config) => {
+                    config.headers.Authorization = `Bearer ${response.data.token}`;
+                    return config;
+                });
                 setLoading(false);
                 return navigate("/dashboard");
             })
@@ -67,10 +62,6 @@ const Register = () => {
         setEmail("test@user.com");
         setPassword("12345678");
     };
-
-    if (isLoading) {
-        return <PageLoading />;
-    }
 
     return (
         <section
